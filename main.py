@@ -111,14 +111,14 @@ def intersect_binary_improved(dense, sparse, u, build_timer, timer):
 def intersect_hashtable(dense, sparse, u, build_timer, timer):
     build_timer.start()
     hashtable = {}
-    for i in xrange(len(sparse)):
-        hashtable[sparse[i]] = True
+    for i in xrange(len(dense)):
+        hashtable[dense[i]] = True
     build_timer.end()
 
     timer.start()
     intersects = []
-    for i in xrange(len(dense)):
-        x = dense[i]
+    for i in xrange(len(sparse)):
+        x = sparse[i]
         if hashtable.get(x) == True:
             intersects.append(x)
     timer.end() 
@@ -208,7 +208,7 @@ if __name__ == '__main__':
     iterations = 1
     #gaps = [10, 100, 1000, 2000, 3000, 4000, 5000, 10000, 20000, 30000, 40000, 50000, 100000, 500000, 10000000]
     #gaps = [10, 100, 1000, 10000, 100000]
-    gaps = [10000]
+    gaps = [100, 1000, 10000, 100000]
     #u = 10000000
     u = 10000000
 
